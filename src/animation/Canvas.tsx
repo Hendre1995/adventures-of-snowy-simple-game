@@ -1,24 +1,25 @@
-import { useRef, useEffect } from "react";
+import { type } from "os";
+import { useRef, useEffect} from "react";
+
+type CanvasProps = React.DetailedHTMLProps<React.CanvasHTMLAttributes<HTMLCanvasElement>, HTMLCanvasElement
+> & {draw:(context: CanvasRenderingContext2D)=>void};
 
 
-const Canvas = () => {
-  const canvasRef =useRef<HTMLCanvasElement | null>(null);
-  useEffect(()=>{
-const canvas = canvasRef.current;
-if(!canvas){
-  return;
+const Canvas: React.FC<CanvasProps> = ({draw,...props }) => {
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) {
+      return;
+    }
+    const context = canvas.getContext("2d")
+    if (!context) {
+      return;
+    }
+    draw(context);
+  }, [draw])
+
+  return <canvas width={props.width} height={props.height} ref={canvasRef}  style={{border:"1px solid black",margin:1}}/>
 }
-const context =canvas.getContext("2d")
-if(!context){
-  return;
-}
-context.fillStyle="blue"
-context.fillRect(0,0,100,100)
-  }, [])
 
-  return <canvas ref={canvasRef}/>
-
- 
-}
-
-export default Canvas ;
+export default Canvas;
