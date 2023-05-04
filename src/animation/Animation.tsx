@@ -1,13 +1,11 @@
-import React from 'react';
-import Canvas from './Canvas';
+import { useRef, useLayoutEffect } from "react";
+import Cat from "../assets/image//CatSprite.png"
 
-const CANVAS_HEIGHT = 200;
-const CANVAS_WIDTH = 200;
 
-function Animation() {
 
-    return (
-        <Canvas width={CANVAS_WIDTH} height={CANVAS_HEIGHT} />
-    );
+const Animation = () => {
+
+  
+
 }
 export default Animation;

@@ -1,12 +1,13 @@
 import React from 'react';
-import Animation from './animation/Animation';
-
+import Canvas from './animation/Canvas';
+const CANVAS_HEIGHT = 600;
+const CANVAS_WIDTH = 600;
 
 function App() {
- 
+
   return (
     <div style={{}}>
-     <Animation></Animation>
+      <Canvas width={CANVAS_WIDTH} height={CANVAS_HEIGHT}/>
     </div>
   );
 }
