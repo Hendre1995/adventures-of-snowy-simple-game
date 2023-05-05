@@ -1,13 +1,14 @@
 import { useRef, useLayoutEffect } from "react";
 import Cat from "../assets/image//CatSprite.png"
+import BackGroundImage from "../assets/image/GameBack.png"
 type CanvasProps = React.DetailedHTMLProps<React.CanvasHTMLAttributes<HTMLCanvasElement>, HTMLCanvasElement
 >;
 type Frame = any;
 
 const SPRITE_PLAYER_HEIGHT = 200;
-const SPRITE_PLAYER_WIDTH = 200;
-const spriteWidth = 186
-const spriteHeight = 163
+const SPRITE_PLAYER_WIDTH = 200; 
+const spriteWidth = 186 
+const spriteHeight = 163  
 const staggerFrames = 7;
 const spriteAnimations: any = [];
 const AnimationStates = [
@@ -46,7 +47,7 @@ const AnimationStates = [
 ];
 
 let gameFrame = 0;
-let playerState = "Dead"
+let playerState = "Walk"
 AnimationStates.forEach((state, index) => {
   let frames: Frame = {
     loc: [],
@@ -58,22 +59,24 @@ AnimationStates.forEach((state, index) => {
   }
   spriteAnimations[state.name] = frames
 });
-const Canvas: React.FC<CanvasProps> = ({ ...props }) => {
+const SpriteCanvas: React.FC<CanvasProps> = ({ ...props }) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const canvas = canvasRef.current;
   const ctx = canvas?.getContext("2d")
+  const BackGroundImage1 = new Image()
+  BackGroundImage1.src = BackGroundImage
   const playerImage = new Image();
   playerImage.src = Cat
 
   const animate = () => {
-    ctx?.clearRect(300, 400, SPRITE_PLAYER_WIDTH, SPRITE_PLAYER_HEIGHT);
+    ctx?.clearRect(0, 0, SPRITE_PLAYER_WIDTH, SPRITE_PLAYER_HEIGHT);
     let position = Math.floor(gameFrame / staggerFrames) % spriteAnimations[playerState].loc.length;
     let frameX = spriteWidth * position;
     let frameY = spriteAnimations[playerState].loc[position].y;
-    ctx?.drawImage(playerImage, frameX, frameY, spriteWidth, spriteHeight, 300, 400, spriteWidth, spriteHeight);
+    ctx?.drawImage(playerImage, frameX, frameY, spriteWidth, spriteHeight, 0, 0, spriteWidth, spriteHeight);
 
     gameFrame++;
-    requestAnimationFrame(animate)
+    requestAnimationFrame(animate) 
   };
 
   useLayoutEffect(() => {
@@ -85,13 +88,13 @@ const Canvas: React.FC<CanvasProps> = ({ ...props }) => {
     height={props.height}
     ref={canvasRef}
     style={{
-      border: "1px solid black",
+     
       position: "absolute",
-      top: "50%",
+      top: "80%",
       left: "50%",
       transform: "translate(-50%, -50%)",
     }} />
 
 }
 
-export default Canvas;
+export default SpriteCanvas;
