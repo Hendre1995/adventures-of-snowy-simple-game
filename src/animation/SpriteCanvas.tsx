@@ -47,7 +47,7 @@ const AnimationStates = [
 ];
 
 let gameFrame = 0;
-let playerState = "Walk"
+let playerState = "Slide"
 AnimationStates.forEach((state, index) => {
   let frames: Frame = {
     loc: [],
@@ -78,7 +78,7 @@ const SpriteCanvas: React.FC<CanvasProps> = ({ ...props }) => {
     gameFrame++;
     requestAnimationFrame(animate) 
   };
-
+ 
   useLayoutEffect(() => {
     animate()
   }, [])

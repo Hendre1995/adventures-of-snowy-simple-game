@@ -12,7 +12,7 @@ const ForGroundCanvas: React.FC<CanvasProps> = ({ children, ...props }) => {
     const ctx = canvas?.getContext("2d")
     const ForGroundImage1 = new Image()
     ForGroundImage1.src = ForGroundImage
- 
+
 
 
     let x = 0
