@@ -15,7 +15,7 @@ const BackGroundCanvas: React.FC<CanvasProps> = ({ children, ...props }) => {
   const BackGroundImage1 = new Image()
   BackGroundImage1.src = BackGroundImage;
   const BackGroundTree = new Image();
-  BackGroundTree.src = MidGroundImge;
+  BackGroundTree.src = MidGroundImge; 
   const SlowCloudsGround = new Image();
   SlowCloudsGround.src = SlowClouds; 
   const FastCloudsGround = new Image();
@@ -23,7 +23,7 @@ const BackGroundCanvas: React.FC<CanvasProps> = ({ children, ...props }) => {
   const ForGroundTrees = new Image();
   ForGroundTrees.src = ForGroundImage;
  // walking speed 5 run and slide speed 8
-  let GameSpeed = 5
+  let GameSpeed = 8
   class Layer {
     image: HTMLImageElement;
     width: number;
@@ -60,11 +60,11 @@ const BackGroundCanvas: React.FC<CanvasProps> = ({ children, ...props }) => {
       ctx?.drawImage(this.image, this.x2, this.y, this.width, this.height);
     }
   }
-  const layer1 = new Layer(BackGroundImage1, 0.1);
-  const layer2 = new Layer(SlowCloudsGround, 0.2);
-  const layer3 = new Layer(BackGroundTree, 0.5);
-  const layer4 = new Layer(FastCloudsGround, 0.4);
-  const layer5 = new Layer(ForGroundTrees, 0.9);
+  const layer1 = new Layer(BackGroundImage1, 0.09);
+  const layer2 = new Layer(SlowCloudsGround, 0.25);
+  const layer3 = new Layer(BackGroundTree, 0.6);
+  const layer4 = new Layer(FastCloudsGround, 0.45);
+  const layer5 = new Layer(ForGroundTrees, 0.8);
 
 
   const GameObject = [

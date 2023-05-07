@@ -9,7 +9,7 @@ const SPRITE_PLAYER_HEIGHT = 200;
 const SPRITE_PLAYER_WIDTH = 200; 
 const spriteWidth = 186 
 const spriteHeight = 163  
-const staggerFrames = 11;
+const staggerFrames = 10;
 const spriteAnimations: any = [];
 const AnimationStates = [
   {
@@ -44,8 +44,8 @@ const AnimationStates = [
     name: "Walk",
     frames: 10
   },
-];
-
+]; 
+ 
 let gameFrame = 0; 
 let playerState = "Walk" 
 AnimationStates.forEach((state, index) => {
