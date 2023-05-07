@@ -3,6 +3,7 @@ import BackGroundImage from "../assets/image/GameBack.png"
 import MidGroundImge from '../assets/image/GameMidGround.png'
 import SlowClouds from "../assets/image/SlowClouds.png"
 import FastCoulds from "../assets/image/FastClouds.png"
+import ForGroundImage from "../assets/image/forGroundNew.png"
 type CanvasProps = React.DetailedHTMLProps<React.CanvasHTMLAttributes<HTMLCanvasElement>, HTMLCanvasElement
 >;
 const GAME_CANVAS_HEIGHT = window.innerHeight / 1.1;
@@ -16,11 +17,13 @@ const BackGroundCanvas: React.FC<CanvasProps> = ({ children, ...props }) => {
   const BackGroundTree = new Image();
   BackGroundTree.src = MidGroundImge;
   const SlowCloudsGround = new Image();
-  SlowCloudsGround.src = SlowClouds;
+  SlowCloudsGround.src = SlowClouds; 
   const FastCloudsGround = new Image();
   FastCloudsGround.src = FastCoulds;
-
-  let GameSpeed = 8
+  const ForGroundTrees = new Image();
+  ForGroundTrees.src = ForGroundImage;
+ // walking speed 5 run and slide speed 8
+  let GameSpeed = 5
   class Layer {
     image: HTMLImageElement;
     width: number;
@@ -34,7 +37,7 @@ const BackGroundCanvas: React.FC<CanvasProps> = ({ children, ...props }) => {
       this.x = 0;
       this.y = 0;
       this.width = 6000;
-      this.height = 750;
+      this.height = 750; 
       this.x2 = this.width;
       this.image = image;
       this.speedModifier = speedModifier;
@@ -59,15 +62,17 @@ const BackGroundCanvas: React.FC<CanvasProps> = ({ children, ...props }) => {
   }
   const layer1 = new Layer(BackGroundImage1, 0.1);
   const layer2 = new Layer(SlowCloudsGround, 0.2);
-  const layer3 = new Layer(BackGroundTree, 0.4);
-  const layer4 = new Layer(FastCloudsGround,0.3);
- 
-const GameObject=[
-  layer1, layer2,layer3,layer4
-]
+  const layer3 = new Layer(BackGroundTree, 0.5);
+  const layer4 = new Layer(FastCloudsGround, 0.4);
+  const layer5 = new Layer(ForGroundTrees, 0.9);
+
+
+  const GameObject = [
+    layer1, layer2, layer3, layer4, layer5
+  ]
   const BackGrounAnimate = () => {
     ctx?.clearRect(0, 0, GAME_CANVAS_WIDTH, GAME_CANVAS_HEIGHT);
-    GameObject.forEach(Object=>{
+    GameObject.forEach(Object => {
       Object.update();
       Object.draw();
     })

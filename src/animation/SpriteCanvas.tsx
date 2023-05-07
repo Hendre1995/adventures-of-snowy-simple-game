@@ -9,7 +9,7 @@ const SPRITE_PLAYER_HEIGHT = 200;
 const SPRITE_PLAYER_WIDTH = 200; 
 const spriteWidth = 186 
 const spriteHeight = 163  
-const staggerFrames = 7;
+const staggerFrames = 11;
 const spriteAnimations: any = [];
 const AnimationStates = [
   {
@@ -46,8 +46,8 @@ const AnimationStates = [
   },
 ];
 
-let gameFrame = 0;
-let playerState = "Slide"
+let gameFrame = 0; 
+let playerState = "Walk" 
 AnimationStates.forEach((state, index) => {
   let frames: Frame = {
     loc: [],
@@ -75,7 +75,7 @@ const SpriteCanvas: React.FC<CanvasProps> = ({ ...props }) => {
     let frameY = spriteAnimations[playerState].loc[position].y;
     ctx?.drawImage(playerImage, frameX, frameY, spriteWidth, spriteHeight, 0, 0, spriteWidth, spriteHeight);
 
-    gameFrame++;
+    gameFrame++; 
     requestAnimationFrame(animate) 
   };
  
